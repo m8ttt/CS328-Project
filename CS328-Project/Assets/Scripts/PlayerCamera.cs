@@ -4,26 +4,17 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public GameObject character;
-    public float offset;
-    public float smoothing;
-    private Vector3 characterPosition;
+    [SerializeField] private Vector3 offset;
+    [SerializeField] private float followSpeed;
 
-    void Start()
+    public Transform target;
+
+    private Vector3 v = Vector3.zero;
+
+    private void FixedUpdate()
     {
-
-    }
-   
-    void Update()
-    {
-        characterPosition = new Vector3(character.transform.position.x, transform.position.y, transform.position.z);
-
-        if (character.transform.localScale.x > 0f){
-            characterPosition = new Vector3(characterPosition.x + offset, characterPosition.y, characterPosition.z);
-        } else {
-            characterPosition = new Vector3(characterPosition.x - offset, characterPosition.y, characterPosition.z);
-        }
-
-        transform.position = Vector3.Lerp(transform.position, characterPosition, smoothing * Time.deltaTime);
+        Vector3 targetPos = target.position + offset;
+        targetPos.z = transform.position.z;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref v, followSpeed);
     }
 }
