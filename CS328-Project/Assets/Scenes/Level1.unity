@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 59740838}
   - component: {fileID: 59740841}
   - component: {fileID: 59740837}
+  - component: {fileID: 59740843}
   - component: {fileID: 59740842}
   m_Layer: 0
   m_Name: Player
@@ -300,6 +301,21 @@ PolygonCollider2D:
       - {x: 0.35272336, y: -0.6775434}
       - {x: 0.3876239, y: -0.17066813}
       - {x: 0.2614944, y: 0.0022587776}
+--- !u!114 &59740843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59740836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9ffe4dd6712f444923f98a545a5016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+  HB: {fileID: 484150731}
 --- !u!1 &484150728
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 484150729}
   - component: {fileID: 484150730}
+  - component: {fileID: 484150731}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -384,12 +401,55 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 0.928
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &484150731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484150728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f0925df8aab7d4eb69f37ba0e9262f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 484150730}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.9811321, g: 0.48593804, b: 0.48593804, a: 1}
+    key1: {r: 0.9716981, g: 0.9016363, b: 0.48126557, a: 1}
+    key2: {r: 0.57069343, g: 0.9528302, b: 0.50787646, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 21823
+    ctime1: 43646
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  filling: {fileID: 1633834528}
 --- !u!1 &546944094
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,8 +731,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 109.2, y: -105.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 138.93, y: -103.3}
+  m_SizeDelta: {x: 188.5516, y: 29.2862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929827371
 MonoBehaviour:
@@ -695,12 +755,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 300
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -127158,8 +127218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.9842987, y: 0.14550018}
-  m_SizeDelta: {x: 7.9007, y: 2.1437}
+  m_AnchoredPosition: {x: 2.5161, y: -0.5683}
+  m_SizeDelta: {x: 20.9015, y: 2.7147}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630394226
 MonoBehaviour:
