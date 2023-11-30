@@ -20,4 +20,5 @@ public class HealthBarScript : MonoBehaviour
         slider.value = hp;
         filling.color = gradient.Evaluate(slider.normalizedValue);
     }
+
 }

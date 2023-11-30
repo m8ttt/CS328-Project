@@ -25,9 +25,16 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
+
+    public void addHealth(int value){
+        currentHealth += value;
+        HB.SetHealth(currentHealth);
+    }
+    
     //damage test, delete
     void Damage(int damage){
         currentHealth -= damage;
         HB.SetHealth(currentHealth);
     }
+
 }
