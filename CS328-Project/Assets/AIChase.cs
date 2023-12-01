@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AIChase : MonoBehaviour
-{
+{ 
+    public int damage = 5;
    public Transform player;
    public float moveSpeed = 4f;
    private Rigidbody2D rb;
@@ -29,5 +30,12 @@ public class AIChase : MonoBehaviour
 
     void moveCharacter(Vector2 direction){
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.CompareTag("Player")){
+            collision.gameObject.GetComponent<PlayerMain>().TakeDamage(damage);
+        }
     }
 }
