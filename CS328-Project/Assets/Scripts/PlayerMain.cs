@@ -23,6 +23,7 @@ public class PlayerMain : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)){
             Damage(10);
         }
+
     }
 
 
