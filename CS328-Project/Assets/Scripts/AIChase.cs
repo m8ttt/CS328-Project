@@ -6,13 +6,14 @@ public class AIChase : MonoBehaviour
 { 
     public int damage = 5;
    public Transform player;
-   public float moveSpeed = 4f;
-   private Rigidbody2D rb;
+   public float moveSpeed = 3f;
+   //private Rigidbody2D rb;
    private Vector2 movement;
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //rb = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -20,22 +21,28 @@ public class AIChase : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         direction.Normalize();
-        movement = direction;
+        transform.position += direction * moveSpeed * Time.deltaTime;
+        //rb.velocity = direction * moveSpeed;
+        //movement = direction;
     }
 
-    private void FixedUpdate(){
+    /*private void FixedUpdate(){
         moveCharacter(movement);
     }
 
 
-    void moveCharacter(Vector2 direction){
+    /*void moveCharacter(Vector2 direction){
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
-    }
+    }*/
 
 
     void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.CompareTag("Player")){
-            collision.gameObject.GetComponent<PlayerMain>().TakeDamage(damage);
+            PlayerMain playerHealth = collision.gameObject.GetComponent<PlayerMain>();
+            if(playerHealth != null){
+                playerHealth.TakeDamage(damage);
+            }
+            //collision.gameObject.GetComponent<PlayerMain>().TakeDamage(damage);
         }
     }
 }
