@@ -13,6 +13,8 @@ public class PhaseTwo : MonoBehaviour
     private int health;
 
     private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    public float damageIndicatorDuration = 0.2f;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class PhaseTwo : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        StartCoroutine(DamageIndicator());
 
         if (health <= 0)
         {
@@ -56,5 +59,12 @@ public class PhaseTwo : MonoBehaviour
             Debug.Log($"{enemyName} has been defeated!");
             gameObject.SetActive(false); // or destroy the game object, depending on your requirements
         }
+    }
+
+    IEnumerator DamageIndicator()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(damageIndicatorDuration);
+        spriteRenderer.color = originalColor;
     }
 }
