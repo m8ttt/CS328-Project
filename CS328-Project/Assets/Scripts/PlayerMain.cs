@@ -67,7 +67,7 @@ public class PlayerMain : MonoBehaviour
             //damage test, delete 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Damage(10);
+                TakeDamage(10);
                 StartCoroutine(DamageIndicator());
             }
 
