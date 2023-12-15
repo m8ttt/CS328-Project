@@ -296,7 +296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29919297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.32, y: -15.89, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -310,7 +310,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29919297}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 59740841}
-  attackRange: 1
+  attackRange: 2
   enemyTag: Enemy
   damage: 5
 --- !u!95 &59740841
@@ -555,6 +555,8 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   HB: {fileID: 484150731}
+  damageIndicatorDuration: 0.2
+  animator: {fileID: 59740841}
 --- !u!224 &59740845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -925,6 +927,7 @@ GameObject:
   - component: {fileID: 203144586}
   - component: {fileID: 203144587}
   - component: {fileID: 203144588}
+  - component: {fileID: 203144589}
   m_Layer: 0
   m_Name: DustySkeleton1
   m_TagString: Enemy
@@ -960,7 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   player: {fileID: 59740845}
-  moveSpeed: 3
+  moveSpeed: 2
 --- !u!114 &203144584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,15 +971,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203144581}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0de30b6287759a74cae69f9a00175f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2
   spawnInterval: 5
-  detectionRange: 10
-  enemyPrefab: {fileID: 0}
+  detectionRange: 5
+  enemyPrefab: {fileID: 1990392609}
 --- !u!212 &203144585
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1092,6 +1095,20 @@ MonoBehaviour:
   shootingRange: 5
   projectileSpeed: 4
   timeBetweenShots: 3
+--- !u!114 &203144589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203144581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223574c8485cf194aafc3b47e11e4255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  damageIndicatorDuration: 0.2
 --- !u!1001 &272435504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,6 +1218,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &272435508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272435505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223574c8485cf194aafc3b47e11e4255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  damageIndicatorDuration: 0.2
+--- !u!114 &272435511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272435505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42aaaf2013937549b0eda8df16232ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorInterval: 10
+  moveSpeed: 5
+  lungeDuration: 2
 --- !u!1 &439041707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1630,7 @@ GameObject:
   - component: {fileID: 680548961}
   - component: {fileID: 680548962}
   - component: {fileID: 680548963}
+  - component: {fileID: 680548964}
   m_Layer: 0
   m_Name: CloakedGoblin1
   m_TagString: Enemy
@@ -1689,7 +1736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd2b47120ac1584693151fd4912b150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 10
   player: {fileID: 59740845}
   moveSpeed: 2
 --- !u!61 &680548962
@@ -1735,6 +1782,20 @@ MonoBehaviour:
   aoeRadius: 3
   chargeCooldown: 4
   redIndicatorPrefab: {fileID: 1902513950}
+--- !u!114 &680548964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680548957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223574c8485cf194aafc3b47e11e4255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 15
+  damageIndicatorDuration: 0.2
 --- !u!1 &770159918
 GameObject:
   m_ObjectHideFlags: 0
@@ -129341,6 +129402,7 @@ GameObject:
   - component: {fileID: 1907907972}
   - component: {fileID: 1907907974}
   - component: {fileID: 1907907975}
+  - component: {fileID: 1907907976}
   m_Layer: 0
   m_Name: DustySkeleton1
   m_TagString: Enemy
@@ -129420,14 +129482,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907907969}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6cd2b47120ac1584693151fd4912b150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
   player: {fileID: 0}
-  moveSpeed: 4
+  moveSpeed: 2
 --- !u!114 &1907907973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129440,9 +129502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de30b6287759a74cae69f9a00175f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 2
   spawnInterval: 5
-  detectionRange: 10
+  detectionRange: 3
   enemyPrefab: {fileID: 203144581}
 --- !u!50 &1907907974
 Rigidbody2D:
@@ -129491,6 +129553,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &1907907976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907907969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 223574c8485cf194aafc3b47e11e4255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  damageIndicatorDuration: 0.2
 --- !u!1 &1989858827
 GameObject:
   m_ObjectHideFlags: 0

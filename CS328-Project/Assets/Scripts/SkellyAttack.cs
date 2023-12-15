@@ -43,4 +43,20 @@ public class SkellyAttack : MonoBehaviour
             elapsedTimeSinceLastShot = Time.time;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the enemy collides with the player
+        if (other.CompareTag("Player"))
+        {
+            // Get the PlayerMain script from the player
+            PlayerMain playerMain = other.GetComponent<PlayerMain>();
+
+            // Apply damage to the player
+            if (playerMain != null)
+            {
+                playerMain.TakeDamage(5);
+            }
+        }
+    }
 }

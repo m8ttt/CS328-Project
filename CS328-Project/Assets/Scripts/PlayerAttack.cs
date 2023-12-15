@@ -66,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
 
     void PerformAttack()
     {
-        // Detect enemies with the specified tag in front of the player and destroy them
+        // Detect enemies with the specified tag in front of the player and apply damage
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -74,8 +74,15 @@ public class PlayerAttack : MonoBehaviour
             // Check if the collider belongs to an enemy with the specified tag
             if (enemy.CompareTag(enemyTag))
             {
-                // Destroy the enemy
-                Destroy(enemy.gameObject);
+                // Get the EnemyHealth component (assuming the enemy has this script)
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+
+                // Check if the enemy has the health component
+                if (enemyHealth != null)
+                {
+                    // Apply damage to the enemy
+                    enemyHealth.TakeDamage(damage);
+                }
             }
         }
     }
