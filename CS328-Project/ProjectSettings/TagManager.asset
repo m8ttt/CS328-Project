@@ -10,7 +10,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - test
   - Water
   - UI
   - 
@@ -42,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: enemy
+    uniqueID: 2562079155
+    locked: 0
+  - name: Player
+    uniqueID: 3311557843
+    locked: 0
+  - name: RangeAttack
+    uniqueID: 2014178211
     locked: 0
