@@ -43,6 +43,8 @@ public class PlayerMain : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+        HB.SetHealth(currentHealth);
+        if(currentHealth <= 0){
             Die();
         }
     }
