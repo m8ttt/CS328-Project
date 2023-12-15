@@ -29,6 +29,7 @@ public class PlayerMain : MonoBehaviour
 
     public void TakeDamage(int damage){
         currentHealth -= damage;
+        HB.SetHealth(currentHealth);
         if(currentHealth <= 0){
             Die();
         }
