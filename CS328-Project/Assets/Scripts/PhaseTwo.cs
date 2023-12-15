@@ -4,67 +4,59 @@ using UnityEngine;
 
 public class PhaseTwo : MonoBehaviour
 {
-    public string enemyName = "Boss";
-    public int maxHealth = 100;
-    public string[] phases = { "Phase 1", "Phase 2", "Phase 3" };
-    public Sprite[] phaseSprites; // Add your sprite assets to this array
+    public Sprite normalSprite;
+    public Sprite fullHealthSprite;
 
-    private int currentPhase = 0;
-    private int health;
+    public int startHealth = 100;
+    public int healthThreshold = 50;
+
+    private int currentHealth;
 
     private SpriteRenderer spriteRenderer;
-    private Color originalColor;
-    public float damageIndicatorDuration = 0.2f;
 
-    private void Start()
+    void Start()
     {
-        health = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        currentHealth = startHealth;
 
         // Set the initial sprite
-        if (phaseSprites.Length > 0)
-        {
-            spriteRenderer.sprite = phaseSprites[currentPhase];
-        }
+        SetSprite();
     }
 
-    public void TakeDamage(int damage)
+    void Update()
     {
-        health -= damage;
-        StartCoroutine(DamageIndicator());
+        // Example: Decrease health over time
+        // Replace this with your actual health decrease logic
+        currentHealth -= 1;
 
-        if (health <= 0)
+        // Ensure health does not go below 0
+        currentHealth = Mathf.Max(0, currentHealth);
+
+        // Check if health is below the threshold
+        if (currentHealth <= healthThreshold)
         {
-            Respawn();
-        }
-    }
-
-    private void Respawn()
-    {
-        if (currentPhase < phases.Length - 1)
-        {
-            currentPhase++;
-            health = maxHealth;
-
-            // Change the sprite for the new phase
-            if (phaseSprites.Length > currentPhase)
-            {
-                spriteRenderer.sprite = phaseSprites[currentPhase];
-            }
-
-            Debug.Log($"{enemyName} respawned in phase {currentPhase + 1}");
+            // Change sprite to full health sprite
+            spriteRenderer.sprite = fullHealthSprite;
         }
         else
         {
-            Debug.Log($"{enemyName} has been defeated!");
-            gameObject.SetActive(false); // or destroy the game object, depending on your requirements
+            // Change sprite to normal sprite
+            spriteRenderer.sprite = normalSprite;
         }
     }
 
-    IEnumerator DamageIndicator()
+    // Set the sprite based on current health
+    private void SetSprite()
     {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(damageIndicatorDuration);
-        spriteRenderer.color = originalColor;
+        if (currentHealth <= healthThreshold)
+        {
+            spriteRenderer.sprite = fullHealthSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = normalSprite;
+        }
     }
 }
+
+
