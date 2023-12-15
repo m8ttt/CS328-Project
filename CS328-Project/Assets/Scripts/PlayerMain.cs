@@ -8,7 +8,9 @@ public class PlayerMain : MonoBehaviour
 
     public int maxHealth = 50;
     public int currentHealth;
+    public int currentAttack;
     public HealthBarScript HB;
+    public AttackDisplay AD;
     public float damageIndicatorDuration = 0.2f;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -77,6 +79,13 @@ public class PlayerMain : MonoBehaviour
             currentHealth += value;
             HB.SetHealth(currentHealth);
      }
+     
+     public void addAttack(int value)
+     {
+            currentAttack += value;
+            AD.SetAttack(currentAttack);
+     }
+
 
      //damage test, delete
      void Damage(int damage)

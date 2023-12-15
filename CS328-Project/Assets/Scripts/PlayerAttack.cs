@@ -5,21 +5,24 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Animator animator;
+    public PlayerMain player;
     private KeyCode currentKey = KeyCode.None;
     public float attackRange = 1f;
     public string enemyTag = "Enemy";
-    public int damage = 10;
+    public int damage = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         // Initialize currentKey to KeyCode.None at the start
         currentKey = KeyCode.None;
+        damage = 5 + player.currentAttack;
     }
 
     // Update is called once per frame
     void Update()
     {
+        damage = 5 + player.currentAttack;
         // Check for key presses for attack directions
         if (Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
