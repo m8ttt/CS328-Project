@@ -10,6 +10,10 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 1f;
     public string enemyTag = "Enemy";
     public int damage = 5;
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 5f;
+
+    private Vector2 lastMovementDirection = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +69,21 @@ public class PlayerAttack : MonoBehaviour
             }
             PerformAttack();
         }
+
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Store the last movement direction
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            lastMovementDirection = new Vector2(horizontalInput, verticalInput).normalized;
+        }
+
+        // Check for mouse button click
+        if (Input.GetMouseButtonDown(1))
+        {
+            ShootProjectile();
+        }
     }
 
     void PerformAttack()
@@ -88,6 +107,13 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ShootProjectile()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().velocity = lastMovementDirection * projectileSpeed;
+
     }
 
     void OnDrawGizmosSelected()

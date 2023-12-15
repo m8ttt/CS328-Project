@@ -486,6 +486,8 @@ MonoBehaviour:
   attackRange: 2
   enemyTag: Enemy
   damage: 5
+  projectilePrefab: {fileID: 1149112252}
+  projectileSpeed: 5
 --- !u!95 &59740841
 Animator:
   serializedVersion: 3
@@ -1112,6 +1114,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   damageIndicatorDuration: 0.2
+--- !u!1001 &213780116
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.10323088
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014127868739862144, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492431718206819756, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040032842994078001, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
 --- !u!1001 &272435504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3051,6 +3114,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104512056}
   m_CullTransparentMesh: 1
+--- !u!1 &1149112252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3040032842994078001, guid: 306e9ea2b48218f4694227a0dc10da68, type: 3}
+  m_PrefabInstance: {fileID: 213780116}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1166915207
 GameObject:
   m_ObjectHideFlags: 0
