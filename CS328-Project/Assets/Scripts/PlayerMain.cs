@@ -21,8 +21,8 @@ public class PlayerMain : MonoBehaviour
             Debug.LogError("HealthBar script is not assigned to player!");
         }
 
-        currentHealth = maxHealth;
-        HB.setMaxHealth(maxHealth);
+        /*currentHealth = maxHealth;
+        HB.setMaxHealth(maxHealth);*/
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
@@ -36,58 +36,64 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage){
+    public void TakeDamage(int damage)
+    {
         currentHealth -= damage;
         currentHealth = Mathf.Max(currentHealth, 0);
         HB.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
-        HB.SetHealth(currentHealth);
-        if(currentHealth <= 0){
-            Die();
+            HB.SetHealth(currentHealth);
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
     void Die()
     {
-        Debug.Log("Die method called");
-        animator.SetTrigger("Dead");
-        Invoke("RestartGame", 1);
+            Debug.Log("Die method called");
+            animator.SetTrigger("Dead");
+            Invoke("RestartGame", 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //damage test, delete 
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Damage(10);
-            StartCoroutine(DamageIndicator());
-        }
-   
-    }
+      // Update is called once per frame
+     void Update()
+     {
+            //damage test, delete 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Damage(10);
+                StartCoroutine(DamageIndicator());
+            }
+
+     }
 
 
-    public void addHealth(int value){
-        currentHealth += value;
-        HB.SetHealth(currentHealth);
-    }
-    
-    //damage test, delete
-    void Damage(int damage){
-        currentHealth -= damage;
-        HB.SetHealth(currentHealth);
-    }
+     public void addHealth(int value)
+     {
+            currentHealth += value;
+            HB.SetHealth(currentHealth);
+     }
 
-    IEnumerator DamageIndicator()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(damageIndicatorDuration);
-        spriteRenderer.color = originalColor;
-    }
+     //damage test, delete
+     void Damage(int damage)
+     {
+            currentHealth -= damage;
+            HB.SetHealth(currentHealth);
+     }
 
-    void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+     IEnumerator DamageIndicator()
+     {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(damageIndicatorDuration);
+            spriteRenderer.color = originalColor;
+     }
+
+     void RestartGame()
+     {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+     }
 }

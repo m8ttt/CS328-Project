@@ -8,6 +8,7 @@ public class BossCharge : MonoBehaviour
     public float chargeSpeed = 8f;
     public float chargeCooldown = 3f;
     private bool canCharge = true;
+    public int damage = 15;
 
     public Transform player;
 
@@ -44,5 +45,18 @@ public class BossCharge : MonoBehaviour
 
         yield return new WaitForSeconds(chargeCooldown);
         canCharge = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerMain playerHealth = collision.gameObject.GetComponent<PlayerMain>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+            //collision.gameObject.GetComponent<PlayerMain>().TakeDamage(damage);
+        }
     }
 }
